@@ -30,13 +30,22 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. What is the DOM?
 
+    The Document Object Model is a cross-platform and language-independent interface that treats an XML or HTML document as a tree structure wherein each node is an object representing a part of the document
+
 2. What is an event?
+
+    An event in Java is an object that is created when something changes within a graphical user interface. ... If a user clicks on the JButton, a button click event is triggered, the event will be created, and it will be sent to the relevant event listener (in this case, the ActionListener).
 
 3. What is an event listener?
 
+    The EventListener interface represents an object that can handle an event dispatched by an EventTarget object.
+
 4. Why would we convert a NodeList into an Array?
 
+    A NodeList, such as that retrieved by document.querySelectAll(), does not support the array prototype methods like push, pop, or splice. If you wish to use such methods, you need to first convert the NodeList into an array.
+
 5. What is a component?
+    A component is a small, potentially re-usable set of logic, behaviors and interface elements (UI or API).
 
 ### Git Set up
 
