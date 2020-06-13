@@ -22,41 +22,44 @@
 const cardsContainer = document.querySelector('.cards-container');
 
 function addArticle (articleObject) {
-    const card = document.createElement('div');
-    card.classList.add('card');
-    cardsContainer.appendChild(card);
+  const card = document.createElement('div');
+  card.classList.add('card');
+  cardsContainer.appendChild(card);
 
-    const headline = document.createElement('div');
-    headline.classList.add('headline');
-    headline.textContent = articleObject.headline;
-    card.appendChild(headline);
+  const headline = document.createElement('div');
+  headline.classList.add('headline');
+  headline.textContent = articleObject.headline;
+  card.appendChild(headline);
 
-    const authorInfo = document.createElement('div');
-    authorInfo.classList.add('author');
-    card.appendChild(authorInfo);
+  const authorInfo = document.createElement('div');
+  authorInfo.classList.add('author');
+  card.appendChild(authorInfo);
 
-    const authorImageContainer = document.createElement('div');
-    authorImageContainer.classList.add('img-container');
-    authorInfo.appendChild(authorImageContainer);
+  const authorImageContainer = document.createElement('div');
+  authorImageContainer.classList.add('img-container');
+  authorInfo.appendChild(authorImageContainer);
 
-    const authorImage = document.createElement('img');
-    authorImage.src = articleObject.authorPhoto;
-    authorImageContainer.appendChild(authorImage);
+  const authorImage = document.createElement('img');
+  authorImage.src = articleObject.authorPhoto;
+  authorImageContainer.appendChild(authorImage);
 
-    const authorCredit = document.createElement('span');
-    authorCredit.textContent = 'By ${article.Object.authorName}';
-    authorInfo.appendChild(authorCredit);
+  const authorCredit = document.createElement('span');
+  authorCredit.textContent = `By ${articleObject.authorName}`;
+  authorInfo.appendChild(authorCredit);
 }
 
 function getArticles () {
-    axios.get('https://lambda-times-backend.herokuapp.com/articles')
-            .then(function (response) {
-                console.log(response);
-                for (const topic in response.data.articles) {
-                    response.data.articles[topic].forEach(article=>addArticle(article));
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+  axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
+        .then(function (response) {
+            console.log(response);
+            for (const topic in response.data.articles) {
+              response.data.articles[topic].forEach(article=>addArticle(article));
+            }
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
 }
+
+getArticles();
